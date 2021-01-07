@@ -1,20 +1,28 @@
 import React from 'react'
 import ButtonDefault from '../button/ButtonDefault'
-import { ContainerCard, ContainerButtons } from './styled'
+import { ContainerCard, ContainerButtons } from './styled';
+import Button from '@material-ui/core/Button';
 
 
-export default function PokemonCard() {
+export default function PokemonCard(props) {
     return (
         <ContainerCard>
+            <p> Nome: </p>
             <div>
                 <img src={'https://picsum.photos/200'} alt="" />
-                <p> Nome: </p>
             </div>
             <ContainerButtons>
-                <ButtonDefault
-                text='Adicionar' />
-                <ButtonDefault
-                text='Detalhes' />
+                <Button
+                    variant="contained"
+                    color="primary">
+                    {props.text}
+                </Button>
+                
+                <Button
+                    variant="contained"
+                    color="primary">
+                    {props.textDetails}
+                </Button>
             </ContainerButtons>
         </ContainerCard>
     )
