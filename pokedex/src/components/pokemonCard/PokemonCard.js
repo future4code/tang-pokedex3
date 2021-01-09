@@ -9,7 +9,7 @@ export default function PokemonCard(props) {
         <ContainerCard>
             <p> Nome: </p>
             <div>
-                <img src={'https://picsum.photos/200'} alt="" />
+                <img src={props.image} alt="" />
             </div>
             <ContainerButtons>
                 <Button
