@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
-import ButtonDefault from '../../components/button/ButtonDefault';
 import PokemonCard from '../../components/pokemonCard/PokemonCard';
 import { ContainerHome, ButtonHome, Container } from './styled';
 import Button from '@material-ui/core/Button';
@@ -15,50 +14,36 @@ text-align: center;
 
 export default function Home() {
 
-    const pokemonList = useRequestData([], BASE_URL)
+    const pokemonList = useRequestData({}, BASE_URL)
     const [listPokemon, setListPokemon] = useState([])
-    console.log(pokemonList.results)
     
     useEffect(() =>{
-        pokemonList.results && pokemonList.results.map((e)=>{
-            axios.get(e.url).then((response) => {
-                //   setListPokemon(array => [...array, response])
-                  console.log(response)
-            }).catch(error => {alert(error)})
-            
+        const newListPokemon = []
+        pokemonList.results && pokemonList.results.map((item)=>{
+            axios.get(item.url).then((response) => {
+                newListPokemon.push(response.data)
+                if(newListPokemon.length === 20){
+                    setListPokemon(newListPokemon)
+                }
+            }).catch(error => {alert(error)}) 
         })
-    }, [pokemonList.data]);
-    
-    
-        
-    // console.log(listPokemon)
-    // console.log(pokemonList.results)
-    // let newPokemonList = []
-    //     if(pokemonList.results){
-    //         newPokemonList = pokemonList.results.map((indice) => {
-    //                 axios.get(indice.url)
-    //                 .then((response) => {
-    //                 console.log(response.data.sprites.front_default)
-                     
-    //                 return <PokemonCard
-    //                 image={response.data.sprites.front_default}
-    //                 text="Adicionar"
-    //                 textDetails="Detalhes"/>
-    //                 })
-    //                 .catch((error) => {
-    //                 console.log(error)
-    //                 })
-    //             })
-    //             console.log(newPokemonList)
-    //     }
-
-    // const newListMap = newList.map((item)=> {
-        
-    // })
-
-    
+    }, [pokemonList.results]);
+    console.log(listPokemon);
+    const pokemonListRender =
+    listPokemon.map((item) => {
+        return(
+             <PokemonCard
+                key={item.id}
+                identif={item.id}
+                name= {item.name}
+                image= {item.sprites.front_default}
+                text="Adicionar"
+                textDetails="Detalhes"
+            />
+        )
+    })
+   
     return (
-        
         <Container>
             <Title>LISTA DE POKEMONS</Title>
             <ButtonHome>
@@ -67,38 +52,7 @@ export default function Home() {
                 </Link>
             </ButtonHome>
             <ContainerHome>
-                {}
-                <PokemonCard
-                    text="Adicionar"
-                    textDetails="Detalhes"/>
-                <PokemonCard 
-                    text="Adicionar"
-                    textDetails="Detalhes"/>
-                <PokemonCard 
-                    text="Adicionar"
-                    textDetails="Detalhes"/>
-                <PokemonCard 
-                    text="Adicionar"
-                    textDetails="Detalhes"/>
-                <PokemonCard 
-                    text="Adicionar"
-                    textDetails="Detalhes"/>
-                
-                <PokemonCard 
-                    text="Adicionar"
-                    textDetails="Detalhes"/>
-                <PokemonCard 
-                    text="Adicionar"
-                    textDetails="Detalhes"/>
-                <PokemonCard 
-                    text="Adicionar"
-                    textDetails="Detalhes"/>
-                <PokemonCard 
-                    text="Adicionar"
-                    textDetails="Detalhes"/>
-                <PokemonCard 
-                    text="Adicionar"
-                    textDetails="Detalhes"/>
+                {pokemonListRender}
             </ContainerHome>
         </Container>
     )
