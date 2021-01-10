@@ -16,3 +16,7 @@ width:250px;
 justify-content:space-between;
 margin: 10px 0;
 `
+export const NameCard = styled.p`
+text-transform: uppercase;
+font-weight:bold;
+`
