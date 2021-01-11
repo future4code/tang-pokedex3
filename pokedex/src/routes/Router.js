@@ -8,7 +8,6 @@ import Erro from '../pages/erro/Erro';
 import Footer from '../components/footer/Footer';
 
 
-
 const Router = () => {
     return (
         <main>
