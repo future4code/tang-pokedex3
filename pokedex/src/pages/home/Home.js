@@ -16,19 +16,6 @@ export default function Home() {
     // const pokemonList = useRequestData({}, BASE_URL)
     // const [listPokemon, setListPokemon] = useState([])
     
-<<<<<<< HEAD
-    useEffect(() => {
-        const newListPokemon = []
-        pokemonList.results && pokemonList.results.map((item)=>{
-            axios.get(item.url).then((response) => {
-                newListPokemon.push(response.data)
-                if(newListPokemon.length === 20){
-                    setListPokemon(newListPokemon)
-                }
-            }).catch(error => {alert(error)}) 
-        })
-    }, [pokemonList.results]);
-=======
     useEffect(() =>{
         getPokemons()
         //     const newListPokemon = []
@@ -41,14 +28,13 @@ export default function Home() {
     //         }).catch(error => {alert(error)}) 
     //     })
      }, [pokemonList.results]);
->>>>>>> bb37b59fd07ebaacee68b8e892bcf5d2a511dab5
     console.log(listPokemon);
     const pokemonListRender =
     listPokemon.map((item) => {
-
+        
         return(
              <PokemonCard
-                key={item.id}
+                key={item.name}
                 identif={item.id}
                 name= {item.name}
                 image= {item.sprites.front_default}

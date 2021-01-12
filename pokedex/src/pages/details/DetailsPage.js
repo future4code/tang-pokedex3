@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { ContainerDetails, ButtonHome, ContainerButton } from "./styled";
@@ -9,17 +9,22 @@ import { useParams } from 'react-router-dom';
 export const Title = styled.h1`
 text-align: center;
 `
-export default function detailsPage() {
-    const [pokemon, setpokemon] = useState([])
+export default function DetailsPage() {
+    const [pokemon, setPokemon] = useState({})
     const pathParams = useParams();
     const {listPokemon, pokemonList, getPokemons} = useContext(GlobalContext)
    
     useEffect(() => {
-        const pokemon = listPokemon.find((item) => {
-            return item.id === pathParams.id
+        const choosedPokemon = listPokemon.find((item) => {
+            console.log(item.id)
+            return item.id === pathParams.name
         })
+       setPokemon(choosedPokemon)
        
     }, [])
+    console.log(pathParams.name)
+    
+
     return (
         <div>
             <Title>Detalhes</Title>
