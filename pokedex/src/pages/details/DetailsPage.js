@@ -1,13 +1,26 @@
-import { Button } from '@material-ui/core'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { ContainerDetails, ButtonHome, ContainerButton} from "./styled"
+import React, { useContext, useEffect } from 'react';
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { ContainerDetails, ButtonHome, ContainerButton } from "./styled";
 import styled from 'styled-components';
+import GlobalContext from '../../components/global/GlobalContext';
+import { useParams } from 'react-router-dom';
 
 export const Title = styled.h1`
 text-align: center;
 `
 export default function detailsPage() {
+    const [pokemon, setpokemon] = useState([])
+    const pathParams = useParams();
+    const {listPokemon, pokemonList, getPokemons} = useContext(GlobalContext)
+   
+
+    useEffect(() => {
+        const pokemon = listPokemon.find((item) => {
+            return item.id === pathParams.id
+        })
+       
+    }, [])
     return (
         <div>
             <Title>Detalhes</Title>
@@ -50,7 +63,6 @@ export default function detailsPage() {
                     <p>Ataque3</p>
                 </div>
             </ContainerDetails>
-        </div>
-        
+        </div> 
     )
 }
