@@ -17,7 +17,7 @@ export default function Home() {
     const pokemonList = useRequestData({}, BASE_URL)
     const [listPokemon, setListPokemon] = useState([])
     
-    useEffect(() =>{
+    useEffect(() => {
         const newListPokemon = []
         pokemonList.results && pokemonList.results.map((item)=>{
             axios.get(item.url).then((response) => {
@@ -31,6 +31,7 @@ export default function Home() {
     console.log(listPokemon);
     const pokemonListRender =
     listPokemon.map((item) => {
+
         return(
              <PokemonCard
                 key={item.id}
