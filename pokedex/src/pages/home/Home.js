@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import PokemonCard from '../../components/pokemonCard/PokemonCard';
 import { ContainerHome, ButtonHome, Container } from './styled';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
-import { BASE_URL } from "../../constants/constants"
-import useRequestData from "../../Hooks/useRequestData"
-import axios from "axios"
+import GlobalContext from '../../components/global/GlobalContext';
 
 export const Title = styled.h1`
 text-align: center;
@@ -14,9 +12,11 @@ text-align: center;
 
 export default function Home() {
 
-    const pokemonList = useRequestData({}, BASE_URL)
-    const [listPokemon, setListPokemon] = useState([])
+    const {listPokemon, pokemonList, getPokemons} = useContext(GlobalContext)
+    // const pokemonList = useRequestData({}, BASE_URL)
+    // const [listPokemon, setListPokemon] = useState([])
     
+<<<<<<< HEAD
     useEffect(() => {
         const newListPokemon = []
         pokemonList.results && pokemonList.results.map((item)=>{
@@ -28,6 +28,20 @@ export default function Home() {
             }).catch(error => {alert(error)}) 
         })
     }, [pokemonList.results]);
+=======
+    useEffect(() =>{
+        getPokemons()
+        //     const newListPokemon = []
+    //     pokemonList.results && pokemonList.results.map((item)=>{
+    //         axios.get(item.url).then((response) => {
+    //             newListPokemon.push(response.data)
+    //             if(newListPokemon.length === 20){
+    //                 setListPokemon(newListPokemon)
+    //             }
+    //         }).catch(error => {alert(error)}) 
+    //     })
+     }, [pokemonList.results]);
+>>>>>>> bb37b59fd07ebaacee68b8e892bcf5d2a511dab5
     console.log(listPokemon);
     const pokemonListRender =
     listPokemon.map((item) => {

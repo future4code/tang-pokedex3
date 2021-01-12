@@ -1,5 +1,5 @@
-// import './App.css';
 import { CssBaseline } from '@material-ui/core';
+import GlobalState from './components/global/GlobalState'
 import Router from './routes/Router';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -18,9 +18,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div >
-        <CssBaseline >
-          <Router />
-        </CssBaseline>
+        <GlobalState>
+          <CssBaseline >
+            <Router />
+          </CssBaseline>
+        </GlobalState>
       </div>
     </ThemeProvider>
   );
