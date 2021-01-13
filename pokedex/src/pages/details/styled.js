@@ -1,5 +1,10 @@
 import styled from "styled-components"
 
+
+export const  Container = styled.div`
+
+
+`
 export const ContainerDetails = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -19,6 +24,7 @@ export const ContainerButton = styled.div`
 export const ContainerImages = styled.div`
 border: 1 px solid black;
 background:#DBD9D0;
+border-radius: 5px
 `
 
 export const ContainerImage = styled.div`

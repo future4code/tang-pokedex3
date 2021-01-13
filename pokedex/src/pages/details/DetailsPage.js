@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState} from 'react';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { ContainerDetails, ButtonHome, ContainerButton, ContainerEstats, ContainerImages, ContainerImage, Image, ContainerType, ContainerAtacks } from "./styled";
+import { ContainerDetails, ButtonHome, ContainerButton, ContainerEstats, ContainerImages, ContainerImage, Image, ContainerType, ContainerAtacks, Container } from "./styled";
 import styled from 'styled-components';
 import GlobalContext from '../../components/global/GlobalContext';
 import { useParams } from 'react-router-dom';
@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 export const Title = styled.h1`
 text-align: center;
 text-transform:uppercase;
+font-size: 1.5em;
 `
 export default function DetailsPage() {
     const [pokemon, setPokemon] = useState({})
@@ -23,9 +24,8 @@ export default function DetailsPage() {
     }, [listPokemon, pathParams.name])
    
     
-
     return (
-        <div>
+        <Container>
             <Title>Detalhes</Title>
             <ContainerButton>
                 <ButtonHome>
@@ -39,7 +39,7 @@ export default function DetailsPage() {
                     </Link>
                 </ButtonHome>
             </ContainerButton>
-            
+            <main>
             <ContainerDetails>
                 <ContainerImages>
                     <Title>{ pokemon.name }</Title>
@@ -95,6 +95,7 @@ export default function DetailsPage() {
                     </ContainerAtacks>
                 </div>
             </ContainerDetails>
-        </div> 
+            </main>
+        </Container> 
     )
 }

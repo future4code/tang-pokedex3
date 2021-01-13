@@ -8,12 +8,25 @@ import GlobalContext from '../../components/global/GlobalContext';
 
 export const Title = styled.h1`
 text-align: center;
+font-size: 1.5em;
 `
 
 export default function Home() {
 
-    const {listPokemon, pokemonList, getPokemons} = useContext(GlobalContext)
+    const {listPokemon, pokemonList, getPokemons, pokedex, setPokedex} = useContext(GlobalContext)
     
+    const addPokemon = (pokemon) => {
+        let newPokedex = [...pokedex]
+        const selectedPokemon = listPokemon.find((item) => {
+            return item.id === pokemon.id;
+        } )
+            newPokedex.push(selectedPokemon)
+            setPokedex(newPokedex)
+        
+        console.log(selectedPokemon);//------------------------------//
+        console.log(pokedex);//------------------------------------//
+    }
+
     useEffect(() =>{
         getPokemons()
     
@@ -21,7 +34,6 @@ export default function Home() {
     
     const pokemonListRender =
     listPokemon.map((item) => {
-        
         return(
              <PokemonCard
                 key={item.name}
@@ -30,6 +42,7 @@ export default function Home() {
                 image= {item.sprites.front_default}
                 text="Adicionar"
                 textDetails="Detalhes"
+                addOrRemovePokemon={()=> addPokemon(item)}
             />
         )
     })

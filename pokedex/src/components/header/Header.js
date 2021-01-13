@@ -6,7 +6,7 @@ export default function Header() {
     return (
         <Container>
             <ImageHeader>
-                <Image src={pokedex} alt="" />
+                <Image src={pokedex} alt="logo pokedex" />
             </ImageHeader>    
         </Container>
     )

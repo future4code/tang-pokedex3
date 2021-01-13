@@ -13,7 +13,7 @@ export const ImageHeader = styled.div`
 `
 
 export const Image = styled.img`
-    width:75%;
+    width:50%;
 `
 
 
