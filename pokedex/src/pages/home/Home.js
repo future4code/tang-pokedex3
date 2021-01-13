@@ -13,20 +13,10 @@ text-align: center;
 export default function Home() {
 
     const {listPokemon, pokemonList, getPokemons} = useContext(GlobalContext)
-    // const pokemonList = useRequestData({}, BASE_URL)
-    // const [listPokemon, setListPokemon] = useState([])
     
     useEffect(() =>{
         getPokemons()
-        //     const newListPokemon = []
-    //     pokemonList.results && pokemonList.results.map((item)=>{
-    //         axios.get(item.url).then((response) => {
-    //             newListPokemon.push(response.data)
-    //             if(newListPokemon.length === 20){
-    //                 setListPokemon(newListPokemon)
-    //             }
-    //         }).catch(error => {alert(error)}) 
-    //     })
+    
      }, [pokemonList.results]);
     console.log(listPokemon);
     const pokemonListRender =
