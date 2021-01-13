@@ -18,7 +18,7 @@ export default function Home() {
         getPokemons()
     
      }, [pokemonList.results]);
-    console.log(listPokemon);
+    
     const pokemonListRender =
     listPokemon.map((item) => {
         

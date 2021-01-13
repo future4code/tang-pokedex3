@@ -7,3 +7,7 @@ align-items:center;
 background: #fff;
 text-align: center;
 `
+
+export const Paragraph = styled.p`
+font-size: 1em;
+`
