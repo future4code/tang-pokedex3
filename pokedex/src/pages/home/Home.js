@@ -13,19 +13,21 @@ font-size: 1.5em;
 
 export default function Home() {
 
-    const {listPokemon, pokemonList, getPokemons, pokedex, setPokedex} = useContext(GlobalContext)
-    
+    const {listPokemon, pokemonList, getPokemons, pokedex, setPokedex, setListPokemon} = useContext(GlobalContext)
+    console.log(listPokemon)
+
     const addPokemon = (pokemon) => {
         let newPokedex = [...pokedex]
-        const selectedPokemon = listPokemon.find((item) => {
+        let newListPokemon = [...listPokemon]
+        const selectedPokemon = listPokemon.findIndex((item) => {
             return item.id === pokemon.id;
         } )
             newPokedex.push(selectedPokemon)
             setPokedex(newPokedex)
-        
-        console.log(selectedPokemon);//------------------------------//
-        console.log(pokedex);//------------------------------------//
+        newListPokemon.splice(selectedPokemon, 1)
+        setListPokemon(newListPokemon)
     }
+
 
     useEffect(() =>{
         getPokemons()
