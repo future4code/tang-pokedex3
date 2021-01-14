@@ -12,19 +12,35 @@ font-size: 1.5em;
 `
 
 export default function Pokedex() {
-    const { pokedex } = useContext(GlobalContext)
-console.log(pokedex);
-    const pokedexListRender =
-   pokedex.map((item) => {
-        
+    const { pokedex, setPokedex, listPokemon, setListPokemon } = useContext(GlobalContext)
+    console.log(listPokemon)
+    
+    const removePokemon = (pokemon) => {
+        let newPokedex = [...pokedex]
+        let newListPokemon = [...listPokemon]
+        console.log(newListPokemon)
+        const selectedPokemon = listPokemon.findIndex((item) => {
+            console.log(item.id)
+            console.log(pokemon.id)
+            return item.id === pokemon.id;
+        } )
+        console.log(selectedPokemon)
+            newListPokemon.push(selectedPokemon)
+            setListPokemon(newListPokemon)
+        newPokedex.splice(selectedPokemon, 1)
+        setPokedex(newPokedex)
+    }
+    
+    const pokedexListRender = pokedex.map((item) => {   
         return(
              <PokemonCard
                 key={item.name}
                 identif={item.id}
                 name= {item.name}
                 image= {item.sprites.front_default}
-                text="Adicionar"
+                text="Remover"
                 textDetails="Detalhes"
+                addOrRemovePokemon={()=> removePokemon(item)}
             />
         )
     })
