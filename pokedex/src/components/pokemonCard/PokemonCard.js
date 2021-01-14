@@ -10,11 +10,11 @@ export default function PokemonCard(props) {
         <ContainerCard>
             <NameCard>{props.name}</NameCard>
             <div>
-                <img src={props.image} alt="" />
+                <img src={props.image} alt={props.name} />
             </div>
             <ContainerButtons>
                 <Button
-                    onClick={props.addPokedex}
+                    onClick={props.addOrRemovePokemon}
                     variant="contained"
                     color="primary">
                     {props.text}

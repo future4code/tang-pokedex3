@@ -8,6 +8,7 @@ import useRequestData from '../../Hooks/useRequestData';
     
     const pokemonList = useRequestData({}, BASE_URL)
     const [listPokemon, setListPokemon] = useState([])
+    const [pokedex, setPokedex] = useState([])
     
     const getPokemons = () =>{
         const newListPokemon = []
@@ -21,7 +22,7 @@ import useRequestData from '../../Hooks/useRequestData';
         })
     } 
 
-    const data = { listPokemon, setListPokemon, pokemonList, getPokemons }
+    const data = { listPokemon, setListPokemon, pokemonList, getPokemons, pokedex, setPokedex }
     return (
         <GlobalContext.Provider value = { data }>
             { props.children }
