@@ -14,16 +14,23 @@ font-size: 1.5em;
 export default function DetailsPage() {
     const [pokemon, setPokemon] = useState({})
     const pathParams = useParams();
-    const { listPokemon } = useContext(GlobalContext)
-   
+    const { listPokemon, pokedex } = useContext(GlobalContext)
+
+    useEffect(() => {
+        const choosedPokemonPokedex = pokedex.find((item) => {
+            return item.id.toString() === pathParams.name.toString()
+        })
+       setPokemon(choosedPokemonPokedex)
+    }, [pokedex, pathParams.name])
+
     useEffect(() => {
         const choosedPokemon = listPokemon.find((item) => {
             return item.id.toString() === pathParams.name.toString()
         })
        setPokemon(choosedPokemon)
     }, [listPokemon, pathParams.name])
-   
-    
+
+ 
     return (
         <Container>
             <Title>Detalhes</Title>
@@ -42,12 +49,14 @@ export default function DetailsPage() {
             <main>
             <ContainerDetails>
                 <ContainerImages>
-                    <Title>{ pokemon.name }</Title>
+           
+                    <Title>{ !pokemon ? <p>Carregando...</p> : pokemon.name }</Title>
                     <ContainerImage>
-                        <Image src={ pokemon.sprites && pokemon.sprites.front_default } alt={pokemon.name } />
+                        <Image src={ pokemon && pokemon.sprites && pokemon.sprites.front_default } alt={pokemon && pokemon.name } />
                     </ContainerImage>
                     <ContainerImage>
-                        <Image src={ pokemon.sprites && pokemon.sprites.back_default } alt={ pokemon.name } />
+                        <Image src={ pokemon && pokemon.sprites && pokemon.sprites.back_default } alt={ pokemon && pokemon.name } />
+                     
                     </ContainerImage>
                 </ContainerImages>
                 <div>
@@ -94,6 +103,7 @@ export default function DetailsPage() {
                         }) } 
                     </ContainerAtacks>
                 </div>
+
             </ContainerDetails>
             </main>
         </Container> 

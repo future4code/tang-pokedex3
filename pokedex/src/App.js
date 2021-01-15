@@ -3,6 +3,7 @@ import GlobalState from './components/global/GlobalState'
 import Router from './routes/Router';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import { ContainerApp } from './styled'
 
 function App() {
   const theme = createMuiTheme({
@@ -17,13 +18,13 @@ function App() {
   });
   return (
     <ThemeProvider theme={theme}>
-      <div >
+      <ContainerApp >
         <GlobalState>
           <CssBaseline >
             <Router />
           </CssBaseline>
         </GlobalState>
-      </div>
+      </ContainerApp>
     </ThemeProvider>
   );
 }
