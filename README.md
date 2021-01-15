@@ -15,3 +15,8 @@ O que funciona:
 O que não funciona: 
 - Item 3
 - Item 4
+
+### 🛠 Tecnologias
+- React
+- Styled-components
+- Material-UI
