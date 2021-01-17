@@ -5,7 +5,7 @@ Nome dos integrantes:
 - Guilherme Novo
 
 
-Link do Surge: www.link.com.br
+Link do Surge: http://onerous-map.surge.sh/
 
 O que funciona:
 - Requisições da Poke API
@@ -13,8 +13,8 @@ O que funciona:
 - Todos os objetivos básicos do que foi proposto foram alacançados
 
 O que não funciona: 
-- Item 3
-- Item 4
+- #
+
 
 ### 🛠 Tecnologias
 - React
