@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PokemonCard from '../../components/pokemonCard/PokemonCard';
 import { ContainerHome, ButtonHome, Container } from './styled';
@@ -12,7 +12,7 @@ font-size: 1.5em;
 `
 
 export default function Home() {
-    const { listPokemon, pokemonList, getPokemons, pokedex, setPokedex, setListPokemon } = useContext(GlobalContext)
+    const { listPokemon, pokedex, setPokedex, setListPokemon } = useContext(GlobalContext)
 
     const addPokemon = (pokemon) => {
         let newPokedex = [...pokedex]
@@ -24,37 +24,33 @@ export default function Home() {
         const selectedPokemonSplice = listPokemon.findIndex((item) => {
             return item.name === pokemon.name;
         })
-        
+
         newPokedex.push(selectedPokemon)
         setPokedex(newPokedex)
         newListPokemon.splice(selectedPokemonSplice, 1)
         setListPokemon(newListPokemon)
     }
 
-    useEffect(() =>{
-        getPokemons()
-     }, [pokemonList.results]);
-    
     const pokemonListRender =
-    listPokemon.map((item) => {
-        return(
-             <PokemonCard
-                key={ item.name }
-                identif={ item.id }
-                name= { item.name }
-                image= { item.sprites.front_default }
-                text="Adicionar"
-                textDetails="Detalhes"
-                addOrRemovePokemon={()=> addPokemon(item)}
-            />
-        )
-    })
-   
+        listPokemon.map((item) => {
+            return (
+                <PokemonCard
+                    key = { item.name }
+                    identif = { item.id }
+                    name = { item.name }
+                    image = { item.sprites.front_default }
+                    text = "Adicionar"
+                    textDetails="Detalhes"
+                    addOrRemovePokemon = {() => addPokemon(item)}
+                />
+            )
+        })
+
     return (
         <Container>
             <Title>LISTA DE POKEMONS</Title>
             <ButtonHome>
-                <Link to={'/pokedex'}>
+                <Link to={ '/pokedex' }>
                     <Button variant="outlined" color="primary" >Pokédex</Button>
                 </Link>
             </ButtonHome>

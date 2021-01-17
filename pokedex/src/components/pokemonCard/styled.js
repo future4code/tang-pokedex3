@@ -6,7 +6,7 @@ export const ContainerCard = styled.div`
     border-radius: 5px;
     justify-content: center;
     align-items: center;
-    background:#DBD9D0;
+    background:#F0EDE6;
     padding: 0 15px;
 `
 export const ContainerButtons = styled.div`
@@ -26,7 +26,7 @@ display:flex;
 width: 50%;
 justify-content:center;
 align-items: center;
-border: 1px solid #eee;
+
 `
 
 export const Image = styled.img`
