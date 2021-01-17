@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 
 export const  Container = styled.div`
-
+min-height: 80vh;
 
 `
 export const ContainerDetails = styled.section`
@@ -12,6 +12,10 @@ export const ContainerDetails = styled.section`
   gap: 2em;
   margin: 10px;
   padding: 10px;
+
+  @media(max-width: 500px){
+    grid-template-columns: 1fr;
+  }
 `
 export const ButtonHome = styled.div`
   margin: 20px auto;

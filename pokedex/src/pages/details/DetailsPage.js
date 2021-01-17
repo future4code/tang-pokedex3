@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { ContainerDetails, ButtonHome, ContainerButton, ContainerEstats, ContainerImages, ContainerImage, Image, ContainerType, ContainerAtacks, Container } from "./styled";
@@ -11,19 +11,19 @@ text-align: center;
 text-transform:uppercase;
 font-size: 1.5em;
 `
+
 export default function DetailsPage() {
     const [pokemon, setPokemon] = useState({})
     const pathParams = useParams();
-    const { listPokemon } = useContext(GlobalContext)
-   
+    const { listTotalPokemon } = useContext(GlobalContext)
+
     useEffect(() => {
-        const choosedPokemon = listPokemon.find((item) => {
+        const choosedPokemonPokedex = listTotalPokemon.find((item) => {
             return item.id.toString() === pathParams.name.toString()
         })
-       setPokemon(choosedPokemon)
-    }, [listPokemon, pathParams.name])
-   
-    
+        setPokemon(choosedPokemonPokedex)
+    }, [listTotalPokemon, pathParams.name])
+
     return (
         <Container>
             <Title>Detalhes</Title>
@@ -34,68 +34,69 @@ export default function DetailsPage() {
                     </Link>
                 </ButtonHome>
                 <ButtonHome>
-                    <Link to={'/'}>
+                    <Link to={ '/' }>
                         <Button variant="outlined" color="primary" >Lista de Pokemons</Button>
                     </Link>
                 </ButtonHome>
             </ContainerButton>
             <main>
-            <ContainerDetails>
-                <ContainerImages>
-                    <Title>{ pokemon.name }</Title>
-                    <ContainerImage>
-                        <Image src={ pokemon.sprites && pokemon.sprites.front_default } alt={pokemon.name } />
-                    </ContainerImage>
-                    <ContainerImage>
-                        <Image src={ pokemon.sprites && pokemon.sprites.back_default } alt={ pokemon.name } />
-                    </ContainerImage>
-                </ContainerImages>
-                <div>
-                    <Title>Estatísticas</Title>
-                    <ContainerEstats>
-                        <div>
-                            <p>Força:</p>
-                            <p>Ataque:</p>
-                            <p>Defesa:</p>
-                            <p>Ataque especial:</p>
-                            <p>Defesa especial:</p>
-                            <p>Velocidade:</p>
-                        </div>
-                        <div>
-                            { pokemon && pokemon.stats && pokemon.stats.map((item) => {
+                <ContainerDetails>
+                    <ContainerImages>
+                        <Title>{ pokemon && pokemon.name }</Title>
+                        <ContainerImage>
+                            <Image src={ pokemon && pokemon.sprites && pokemon.sprites.front_default } alt={ pokemon && pokemon.name } />
+                        </ContainerImage>
+                        <ContainerImage>
+                            <Image src={ pokemon && pokemon.sprites && pokemon.sprites.back_default } alt={ pokemon && pokemon.name } />
+                        </ContainerImage>
+                    </ContainerImages>
+                    <div>
+                        <Title>Estatísticas</Title>
+                        <ContainerEstats>
+                            <div>
+                                <p>Força:</p>
+                                <p>Ataque:</p>
+                                <p>Defesa:</p>
+                                <p>Ataque especial:</p>
+                                <p>Defesa especial:</p>
+                                <p>Velocidade:</p>
+                            </div>
+                            <div>
+                                { pokemon && pokemon.stats && pokemon.stats.map((item) => {
+                                    return (
+                                        <p key={ item.stat.name }>
+                                            { item.base_stat }
+                                        </p>
+                                    )
+                                }) }
+                            </div>
+                        </ContainerEstats>
+                    </div>
+                    <div>
+                        <Title>Tipo</Title>
+                        <ContainerType>
+                            { pokemon && pokemon.types && pokemon.types.map((item) => {
                                 return (
-                                    <p key={item.stat.name}>
-                                         {item.base_stat}
-                                    </p>
+                                    <span key={ item.type.name }>
+                                        <p>{ item.type.name }</p>
+                                    </span>
+                                )
+                            })}
+                        </ContainerType>
+
+                        <Title>Principais Ataques:</Title>
+                        <ContainerAtacks>
+                            { pokemon && pokemon.types && pokemon.moves.map((item, index) => {
+                                return (
+                                    index < 5 &&
+                                    <p key={ item.move.name }>{ item.move.name } </p>
                                 )
                             }) }
-                        </div>
-                    </ContainerEstats>
-                </div>
-                <div>
-                    <Title>Tipo</Title>
-                    <ContainerType>
-                        { pokemon && pokemon.types && pokemon.types.map((item) => {
-                        return (
-                            <span key={item.type.name}>
-                               <p><strong>{item.type.name} </strong></p>
-                            </span>
-                        )
-                    }) }
-                    </ContainerType>
+                        </ContainerAtacks>
+                    </div>
 
-                    <Title>Principais Ataques:</Title>
-                    <ContainerAtacks>
-                        { pokemon && pokemon.types && pokemon.moves.map((item, index) =>{
-                            return(
-                                index < 5 && 
-                                <p key={item.move.name}><strong>{item.move.name} </strong></p> 
-                            )
-                        }) } 
-                    </ContainerAtacks>
-                </div>
-            </ContainerDetails>
+                </ContainerDetails>
             </main>
-        </Container> 
+        </Container>
     )
 }

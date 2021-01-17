@@ -5,6 +5,7 @@ export const Container = styled.div`
     justify-content: center;
     background-color: #fff;
     max-height:22vh;
+    min-width: 100vw;
 `
 
 export const ImageHeader = styled.div`
@@ -13,7 +14,7 @@ export const ImageHeader = styled.div`
 `
 
 export const Image = styled.img`
-    width:50%;
+    width:40%;
 `
 
 
