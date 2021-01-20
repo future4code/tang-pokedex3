@@ -1,16 +1,22 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Andréa Soares
+- Guilherme Novo
 
-Link do Surge: www.link.com.br
+
+Link do Surge: http://onerous-map.surge.sh/
 
 O que funciona:
-- Item 1
-- Item 2
+- Requisições da Poke API
+- Utilização de Custom Hook e do estado global através de useContext
+- Todos os objetivos básicos do que foi proposto foram alacançados
 
 O que não funciona: 
-- Item 3
-- Item 4
+- #
+
+
+### 🛠 Tecnologias
+- React
+- Styled-components
+- Material-UI

@@ -1,0 +1,35 @@
+{
+	"info": {
+		"_postman_id": "42f32d0e-d5fa-4ecb-87b5-d19d6a0e7405",
+		"name": "Pokedex",
+		"description": "Requisições na pokeAPI para o projeto pokedex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pegar 20 pokemons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Pegar lista com  20 pokemons "
+			},
+			"response": []
+		},
+		{
+			"name": "Detalhes pokemon",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Detalhes de um determinado pokemon"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
